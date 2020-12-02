@@ -32,4 +32,46 @@ degree panoramic world.
 description for each game. This means the game world will contain some VR objects that can be collected by the player and some VR objects that cannot be collected, but
 that may be placed by makers of the game as props or hints. Finally, the game will be won when all of the relevant 3D objects have been collected by the user.
 
+Lecture 3:
+Getting started with React 360::
+--React 360 makes it possible to build VR experiences using the same declarative and component-based approach as in React. The underlying technology of React 360
+makes use of the Three.js JavaScript 3D engine to render 3D graphics with WebGL within any compatible web browser and also provides us with access to VR headsets
+with the Web VR API.
+
+--Though React 360 builds on top of React and the apps run in the browser, React 360 has a lot in common with React Native, thus making React 360 apps cross-platform.
+This also means that some concepts of React Native are also applicable to React 360.
+
+Setting up a React 360 project::
+--React 360 provides developer tools that make it easy to start developing a new React 360 project. The steps to get started are detailed in the official React 360
+documentation, so we will only summarize the steps here and point out the files that are relevant to developing the game
+
+--we can start by installing the React 360 CLI tool
+********************yarn global add react-360-cli******************
+
+--Then, use this React 360 CLI tool to create a new application, and install the required
+dependencies by running the following command
+****************react-360 init MERNVR****************
+
+--This will add the new React 360 application with all of the necessary files into a
+folder, named MERNVR, in the current directory.
+
+**********yarn start*********
+
+--This start command will initialize the local development server, and the default
+React 360 application can be viewed in the browser at
+*******************http://localhost:8081/index.html******************
+
+--To update this starter application and implement our game features, we will modify
+code mainly in the index.js file with some minor updates in the client.js file,
+which can be found in the MERNVR project folder.
+
+--This index.js file contains the application's content and the main code,
+including the view and style code. The code in client.js contains the boilerplate
+that connects the browser to the React application in index.js.
+
+--This code executes the React code defined in index.js, essentially creating a new
+instance of React 360 and loading the React code by attaching it to the DOM.
+
+Lecture 4:
+
 
