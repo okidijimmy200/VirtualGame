@@ -21,8 +21,11 @@ export default class MERNVR extends React.Component {
     super()
     this.state = {
       game: {
+        /*name: A string representing the name of the game */
         name: 'Space Exploration',
+        /*world: A string with the URL pointing to the equirectangular image either hosted on cloud storage, CDNs, or stored on MongoDB */
         world: 'https://s3.amazonaws.com/mernbook/vrGame/milkyway.jpg',
+        /*answerObjects: An array of JavaScript objects containing details of the VR objects that can be collected by the player */
         answerObjects: [
           {
             objUrl: 'https://s3.amazonaws.com/mernbook/vrGame/planet.obj',
@@ -37,6 +40,8 @@ export default class MERNVR extends React.Component {
             color: 'white'
           }
         ],
+        /*wrongObjects: An array of JavaScript objects containing details of the other VR objects to be placed in the VR world that cannot be collected by
+the player */
         wrongObjects: [
           {
             objUrl: 'https://s3.amazonaws.com/mernbook/vrGame/tardis.obj',
@@ -52,6 +57,7 @@ export default class MERNVR extends React.Component {
           }
         ]
       },
+      /*The arrays containing the VR object details will store properties of each object to be added to the 3D world in the game. */
       vrObjects: [],
       hide: 'none',
       collectedNum: 0,

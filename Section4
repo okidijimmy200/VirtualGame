@@ -62,3 +62,26 @@ list of games.
 
 --we will apply 3D world concepts to determine how to set the game world with equirectangular panoramic images, and position VR
 objects in this world based on the 3D coordinate system.
+
+Lecture 3:
+Defining game details::
+--Each game in MERN VR Game will be defined in a common data structure that the
+React 360 application will also adhere to when rendering the individual game details.
+
+--we will discuss the data structure for capturing a game's
+details, and then highlight the difference between using static game data and
+dynamically loaded game data.
+
+Game data structure::
+--The game data will consist of details such as the game's name, a URL pointing to the
+location of the equirectangular image for the game world, and two arrays containing
+details for each VR object to be added to the game world.
+
+The following list indicates the fields corresponding to the game data attributes:::
+--name: A string representing the name of the game
+--world: A string with the URL pointing to the equirectangular image either hosted on cloud storage, CDNs, or stored on MongoDB
+--answerObjects: An array of JavaScript objects containing details of the VR objects that can be collected by the player
+--wrongObjects: An array of JavaScript objects containing details of the other VR objects to be placed in the VR world that cannot be collected by
+the player.
+--The arrays containing the VR object details will store properties of each object to be added to the 3D world in the game.
+
