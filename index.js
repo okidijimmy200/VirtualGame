@@ -27,22 +27,40 @@ export default class MERNVR extends React.Component {
         world: 'https://s3.amazonaws.com/mernbook/vrGame/milkyway.jpg',
         /*answerObjects: An array of JavaScript objects containing details of the VR objects that can be collected by the player */
         answerObjects: [
+          //e object will contain links to the 3D data resource files and transform style property values.
           {
-            objUrl: 'https://s3.amazonaws.com/mernbook/vrGame/planet.obj',
-            mtlUrl: 'https://s3.amazonaws.com/mernbook/vrGame/planet.mtl',
+            /*OBJ and MTL links: The 3D data information resources for the VR objects will be added to the objUrl and mtlUrl attributes */
+            objUrl: 'https://s3.amazonaws.com/mernbook/vrGame/planet.obj', //objUrl: The link to the .obj file for the 3D object
+            mtlUrl: 'https://s3.amazonaws.com/mernbook/vrGame/planet.mtl', // mtlUrl: The link to the accompanying .mtl file
+            /*The objUrl and mtlUrl links may point to files either hosted on cloud storage, CDNs, or stored on MongoDB */
+            /*we will assume that makers will add URLs to their own hosted OBJ, MTL, and equirectangular image files. */
+            //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            /*Translation values: The position of the VR object in the 3D space will be defined with the translate values */
+            /*translateX: The translation value of the object along the x axis */
             translateX: -50,
+            /*translateY: The translation value of the object along the y axis */
             translateY: 0,
+            /*translateZ: The translation value of the object along the z axis */
+            // All translation values are numbers in meters.
             translateZ: 30,
+            /*Rotation values: The orientation of the 3D object will be defined with the rotate values */
+            /*rotateX: The rotation value of the object around the x axis; in other words, turning the object up or down */
             rotateX: 0,
+            /*rotateY: The rotation value of the object around the y axis that would turn the object left or right */
             rotateY: 0,
+            /*rotateZ: The rotation value of the object around the z axis, making the object tilt forward or backward */
+            /*NB:All rotation values are in numbers or string representations of a number in degrees. */
             rotateZ: 0,
-            scale: 7,
-            color: 'white'
+            /*Scale value: The scale value will define the relative size and appearance of the 3D object in the 3D environment */
+            scale: 7, //scale: A number value that defines uniform scale across all axes
+            /*Color: If the 3D object's material texture is not provided in an MTL file, a color value can be defined to set the default color of the object in the color attribute */
+            color: 'white' //color: A string value representing color values allowed in  CSS
           }
         ],
         /*wrongObjects: An array of JavaScript objects containing details of the other VR objects to be placed in the VR world that cannot be collected by
 the player */
         wrongObjects: [
+          //e object will contain links to the 3D data resource files and transform style property values.
           {
             objUrl: 'https://s3.amazonaws.com/mernbook/vrGame/tardis.obj',
             mtlUrl: 'https://s3.amazonaws.com/mernbook/vrGame/tardis.mtl',

@@ -85,3 +85,7 @@ The following list indicates the fields corresponding to the game data attribute
 the player.
 --The arrays containing the VR object details will store properties of each object to be added to the 3D world in the game.
 
+Lecture 3:
+Details of VR objects::
+--The two arrays in the game data structure will store details of the VR objects to be
+added in the game world
