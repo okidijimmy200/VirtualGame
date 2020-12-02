@@ -33,3 +33,32 @@ folder, to be retrieved using asset() for each audio added to the game
 different features for the VR game such as setting the background scene, playing
 audio, adding styles, loading static files, and retrieving the user orientation.
 
+Lecture 2:
+React 360 input events::
+--In order to make the game interface interactive, we will utilize some of the input
+event handlers exposed in React 360.
+--Input events are collected from mouse,
+keyboard, touch, and gamepad interactions, and also with the gaze button click on a
+VR headset.
+
+--The specific input events we will work with are the onEnter, onExit, and onClick
+events
+
+--onEnter: This event is fired whenever the platform cursor begins
+intersecting with a component. We will capture this event for the VR
+objects in the game, so the objects can start rotating around the y axis when
+the platform cursor enters the specific object
+
+--onExit: This event is fired whenever the platform cursor stops intersecting
+with a component.
+--we
+will use it to stop rotating the VR object just exited.
+
+--onClick: The onClick event is used with the VrButton component, and
+is fired when there is click interaction with VrButton. We will use this to
+set click event handlers on the VR objects, and also on the game complete
+message to redirect the user out of the VR application to a link containing a
+list of games.
+
+--we will apply 3D world concepts to determine how to set the game world with equirectangular panoramic images, and position VR
+objects in this world based on the 3D coordinate system.

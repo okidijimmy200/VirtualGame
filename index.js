@@ -149,13 +149,20 @@ Location.replace(url) */
     return (
       <View>
         {this.state.vrObjects.map((vrObject, i) => {
+          /*onClick: The onClick event is used with the VrButton component, and is fired when there is click interaction with VrButton. We will use this to
+set click event handlers on the VR objects, and also on the game complete message to redirect the user out of the VR application to a link containing a
+list of games */
             return (<VrButton onClick={this.collectItem(vrObject)} key={i}>
                       <Entity style={this.setModelStyles(vrObject, i)}
                         source={{
                           obj: {uri: vrObject.objUrl},
                           mtl: {uri: vrObject.mtlUrl}
                         }}
+                        /*onEnter: This event is fired whenever the platform cursor begins intersecting with a component. We will capture this event for the VR
+objects in the game, so the objects can start rotating around the y axis when the platform cursor enters the specific object */
                         onEnter={this.rotate(i)}
+                        /*onExit: This event is fired whenever the platform cursor stops intersecting
+with a component */
                         onExit={this.stopRotate}
                       />
                     </VrButton>
