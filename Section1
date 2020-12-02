@@ -1,0 +1,35 @@
+Developing a Web-Based VR Game
+--we will build the VR game using React 360 by covering the following
+topics:
+--Introducing the MERN VR Game
+--Getting started with React 360
+--Key concepts for developing 3D VR applications
+--Defining game details
+--Building the game view in React 360
+--Bundling the React 360 code to integrate with the MERN skeleton
+
+--After going over these topics, you will be able to apply 3D VR concepts and use React
+360 to start building your own VR-based applications.
+
+Lecture 1:
+Introducing the MERN VR Game::
+--The MERN VR Game web application will be developed by extending the MERN
+skeleton and integrating VR capabilities using React 360. It will be a dynamic, webbased
+VR game application, in which registered users can make their own games, and
+any visitor to the application can play these games.
+
+--The features of the game will be simple enough to reveal the capabilities of
+introducing VR into a MERN-based application, without delving too deeply into the
+advanced concepts of React 360 that may be used to implement more complex VR
+features.
+
+Game features::
+--Each game in the MERN VR Game application will essentially be a different VR
+world, where users can interact with 3D objects placed at different locations in a 360-
+degree panoramic world.
+
+--The gameplay will be similar to that of a scavenger hunt, and to complete each game, users will have to find and collect the 3D objects that are relevant to the clue or
+description for each game. This means the game world will contain some VR objects that can be collected by the player and some VR objects that cannot be collected, but
+that may be placed by makers of the game as props or hints. Finally, the game will be won when all of the relevant 3D objects have been collected by the user.
+
+
