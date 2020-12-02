@@ -1,0 +1,35 @@
+Lecture 1:
+VrHeadModel::
+--VrHeadModel is a utility module in React 360 that simplifies the process of obtaining
+the current orientation of the headset.
+
+--Since the user is moving around in a VR space,
+when the desired feature requires that an object or piece of text should be placed in
+front of or with respect to the user's current orientation, it becomes necessary to know
+exactly where the user is currently gazing.
+
+--we will use this to show the game completed message to the
+user in front of their view, no matter where they end up turning to from their initial
+position.
+--For example, the user may be looking up or down when collecting the final
+object, and the completed message should pop up wherever the user is gazing.
+
+--To implement this, we will retrieve the current head matrix as an array of numbers
+using getHeadMatrix() from VrHeadModel, and set it as a value for the transform
+property in the style attribute of the View component containing the game completed
+message.
+
+Loading assets::
+--In order to load any static asset files such as image or audio files in the code, we can
+utilize the asset method in React 360.
+
+--This asset() functionality in React 360 allows
+us to retrieve external resource files, including audio and image files.
+
+--we will place the sound audio files for the game in the static_assets
+folder, to be retrieved using asset() for each audio added to the game
+
+--we will integrate
+different features for the VR game such as setting the background scene, playing
+audio, adding styles, loading static files, and retrieving the user orientation.
+

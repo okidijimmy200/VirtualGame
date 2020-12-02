@@ -99,7 +99,7 @@ as the source attribute */
       AudioModule.playOneShot({
         /*The source attribute in the options passed to playEnvironmental and
 playOneShot takes a resource file location to load the audio */
-        source: asset('clog-up.mp3'),
+        source: asset('clog-up.mp3'), //we will place the sound audio files for the game in the static_assets folder, to be retrieved using asset() for each audio added to the game,
         /*It can be an asset() statement or a resource URL declaration in the form of {uri: 'PATH'}. */
       })
     }
