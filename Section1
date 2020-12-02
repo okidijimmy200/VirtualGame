@@ -73,5 +73,36 @@ that connects the browser to the React application in index.js.
 instance of React 360 and loading the React code by attaching it to the DOM.
 
 Lecture 4:
+Key concepts for developing the VR game::
+-Before creating VR content and an interactive 360-degree experience for the game, we
+will highlight some of the relevant aspects of the virtual world, and how React 360
+can be used to work with these VR concepts.
 
+--Given the wide range of possibilities in
+the VR space and the various options available with React 360, we need to identify
+and explore the specific concepts that will enable us to implement the interactive VR
+features we defined for the game. In the following sections, we will discuss the
+images that will make up the 360-degree world of the game, the 3D positioning
+system, along with the React 360 components, APIs, and input events that will be
+utilized to implement the game.
+
+Equirectangular panoramic images::
+--The VR world for the game will be composed of a panoramic image that is added
+to the React 360 environment as a background image.
+Panorama images are generally 360-degree images or spherical panoramas projected
+onto a sphere that completely surrounds the viewer. A common and popular format
+for 360-degree panorama images is the equirectangular format. React 360 currently
+supports mono and stereo formats for equirectangular images.
+
+--An equirectangular panoramic image consists of a single image with
+an aspect ratio of 2:1, where the width is twice the height. These
+images are created with a special 360-degree camera. An excellent
+source of equirectangular images is Flickr; you just need to search
+for the equirectangular tag.
+
+--Creating the game world by setting the background scene using an equirectangular
+image in a React 360 environment will make the VR experience immersive and
+transport the user to a virtual location. To enhance this experience and add 3D objects
+in this VR world effectively, we need to learn more about the layout and coordinate
+system relevant to the 3D space.
 

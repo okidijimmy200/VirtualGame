@@ -1,0 +1,52 @@
+Lecture 1:
+3D position – coordinates and transforms::
+--We need to understand positioning and orientation in the VR world space, in order to
+place 3D objects at the desired locations and to make the VR experience feel more
+real.
+--we will review the 3D coordinate system to help us to
+determine the location of a virtual object in the 3D space, and the transform
+capabilities in React 360, which will allow us to position, orient, and scale objects as
+required.
+
+3D coordinate system::
+--For mapping in a 3D space, React 360 uses a three-dimensional meter-based
+coordinate system that is similar to the OpenGL® 3D coordinate system. This allows
+individual components to be transformed, moved, or rotated in 3D in relation to the
+layout in their parent component.
+
+--The 3D coordinate system used in React 360 is a right-handed system. This means the positive x axis is to the right, the positive y
+axis points upward, and the positive z axis is backward. This provides a better mapping with common coordinate systems of the
+world space in assets and 3D world modeling.
+
+--While deciding where and how to place 3D objects in the 360-degree world, we will
+have to set values according to this 3D coordinate system.
+
+Lecture 2:
+Transforming 3D objects::
+--The position and orientation of a 3D object will be determined by its transform
+properties, which will have values corresponding to the 3D coordinate system. In the
+following screenshot, the same 3D book object is placed in two different positions and
+orientations by changing the transform properties in the style attribute of a React
+360 Entity component that is rendering the 3D object.
+
+--This transform feature is based on the transform style used in React, which React 360
+extends to be fully 3D, considering the x-y-z axes. The transform properties are
+added to the Entity components in the style attribute as an array of keys and
+values in the following form:
+style={{ ...
+transform: [
+{TRANSFORM_COMMAND: TRANSFORM_VALUE},
+...
+]
+... }}
+
+--The transform commands and values that are relevant to the 3D objects to be placed
+in our games are translate [x, y, z], with values in meters; rotate [x, y,
+z], with values in degrees; and scale, to determine the size of the object across all
+axes. We can also utilize the matrix command instead, which accepts an array of 16
+numbers representing the translation, rotation, and scale values.
+
+--We will utilize these transform properties to position and orient 3D objects according
+to the 3D coordinate system while placing objects in the game world built using React
+360.
+
