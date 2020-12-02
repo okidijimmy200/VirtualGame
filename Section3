@@ -1,0 +1,75 @@
+Lecture 1:
+The React 360 API::
+--we will utilize
+the APIs provided by React 360 to implement functionality such as setting the
+background scene, playing audio, dealing with external links, adding styles,
+capturing the current orientation of the user's view, and using static asset files. In the
+following sections, we will explore the Environment API, the Audio and Location
+native modules, the StyleSheet API, the VrHeadModel module, and the asset
+specification options.
+
+Environment::
+--In the game, we will set the world or background scene with equirectangular
+panoramic images. We will use the Environment API from React 360 to change this
+background scene dynamically from the React code using its setBackgroundImage
+method.
+--Environment.setBackgroundImage( {uri: 'http://linktopanoramaimage.jpg'
+} )
+
+--This method sets the current background image with the resource at the specified
+URL. When we integrate the React 360 game code with the MERN stack containing
+the game application backend, we can use this to set the game world image
+dynamically using image links provided by the user.
+
+Native modules::
+--Native modules in React 360 provide us with the ability to access functionality that is
+only available in the main browser environment. In the game, we will use
+AudioModule in NativeModules, to play sounds in response to user activity, and the
+Location module, to give us access to window.location in the browser to handle
+external links
+
+--We can use these imported modules in the code to manipulate the audio and location
+URL in the browser.
+
+AudioModule::
+--When the user interacts with the 3D objects in the game, we will play sounds based
+on whether the object can be collected or not, and also whether the game has been
+completed.
+--The AudioModule in NativeModules allows us to add sound to the VR
+world as background environmental audio, one-off sound effects, and spatial audio.
+
+--We will call these AudioModule methods to play specified audio files as needed from
+the game implementation code.
+
+Location::
+--After we integrate the React 360 code containing the game with the MERN stack
+containing the game application backend, the VR game will be launched from the
+MERN server at a declared route containing the specific game's ID.
+
+--once a user
+completes a game, they will also have the option to leave the VR space and go to a
+URL containing a list of other games. To handle these incoming and outgoing app
+links in the React 360 code, we will utilize the Location module in NativeModules.
+
+--The Location module is essentially the Location object returned by the readonly
+window.location property in the browser. We will use the replace method
+and the search property in the Location object to implement features related to
+external links.
+
+--Handling incoming links: When the React 360 app is launched from an
+external URL and after the registered component mounts, we can access the
+URL and retrieve its query string part using the search property in
+Location.
+
+--For the purpose of integrating this React 360 component with MERN VR Game, and
+dynamically loading game details, we will capture this initial URL to parse the game
+ID from a query parameter and then use it to make a read API call to the MERN
+application server.
+
+StyleSheet::
+
+NB::
+--The default distance units for CSS properties, such as width and height, are in meters when mapping to 3D space in React 360,
+whereas the default distance units are in pixels for 2D interfaces in React Native.
+
+--

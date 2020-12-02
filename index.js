@@ -9,6 +9,9 @@ import {
   VrHeadModel,
   asset,
   NativeModules
+  /*Native modules in React 360 provide us with the ability to access functionality that is only available in the main browser environment. In the game, we will use
+AudioModule in NativeModules, to play sounds in response to user activity, and the Location module, to give us access to window.location in the browser to handle
+external links */
 } from 'react-360'
 import Entity from 'Entity'
 const {AudioModule, Location} = NativeModules
@@ -91,13 +94,20 @@ export default class MERNVR extends React.Component {
       })
       this.setState({collectedList: updateCollectedList, collectedNum: updateCollectedNum})
     } else {
+      /*Sound effects: To play a single sound once when the user clicks on 3D objects, we will use the playOneShot method that takes an audio file path
+as the source attribute */
       AudioModule.playOneShot({
+        /*The source attribute in the options passed to playEnvironmental and
+playOneShot takes a resource file location to load the audio */
         source: asset('clog-up.mp3'),
+        /*It can be an asset() statement or a resource URL declaration in the form of {uri: 'PATH'}. */
       })
     }
   }
   checkGameCompleteStatus = (collectedTotal) => {
     if (collectedTotal == this.state.game.answerObjects.length) {
+      /*Environmental audio: To play audio on loop and set the mood when the game is successfully completed, we will use the playEnvironmental
+method, which takes an audio file path as the source attribute, and the loop option as a playback parameter */
       AudioModule.playEnvironmental({
         source: asset('happy-bot.mp3'),
         loop: true
@@ -115,6 +125,9 @@ export default class MERNVR extends React.Component {
           }
   }
   exitGame = () => {
+    /*Handling outgoing links: When we want to direct the user out of the VR application to another link, we can use the replace method in Location,
+as shown in the following code:
+Location.replace(url) */
     Location.replace('/')
   }
   rotate = index => event => {
@@ -149,6 +162,8 @@ export default class MERNVR extends React.Component {
                   )
         })}
         <View style={this.setGameCompletedStyle()}>
+          {/* These style objects defined using StyleSheet.create can be added to components
+as required */}
           <View style={styles.completeMessage}>
             <Text style={styles.congratsText}>Congratulations!</Text>
             <Text style={styles.collectedText}>You have collected all items in {this.state.game.name}</Text>
@@ -163,6 +178,8 @@ export default class MERNVR extends React.Component {
     )
   }
 }
+/*The StyleSheet API from React Native can also be used in React 360 to define several
+styles in one place rather than adding styles to individual components */
 
 const styles = StyleSheet.create({
   completeMessage: {
