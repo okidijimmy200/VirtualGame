@@ -50,3 +50,105 @@ numbers representing the translation, rotation, and scale values.
 to the 3D coordinate system while placing objects in the game world built using React
 360.
 
+Lecture 2:
+React 360 components::
+--React 360 provides a range of components that can be used out of the box to create the
+VR user interface for the game. This range consists of basic components available
+from React Native and also VR-specific components that will allow you to incorporate
+the interactive 3D objects in the VR game.
+
+Core components::
+--The core components in React 360 include two of React Native's built-in components
+– the Text and View components. In the game, we will use these two components to
+add content to the game world.
+
+View::
+--The View component is the most fundamental component for building a user
+interface in React Native, and it maps directly to the native view equivalent on
+whatever platform React Native is running on. In our case, since the application will
+render in the browser, it will map to a <div> element in the browser.
+--The View component is typically used as a container for other components; it can be
+nested inside other views and can have zero-to-many children of any type.
+We will use View components to hold the game world view and add 3D object
+entities and text to the game
+
+Text::
+--The Text component is a React Native component for displaying text, and we will
+use it to render strings in a 3D space by placing Text components inside View
+components.
+
+--We will compose the game world using these two React Native components, along
+with other React 360 components to integrate VR features into the game.
+
+Components for the 3D VR experience::
+--React 360 provides a set of its own components to create the VR experience.
+Specifically, we will use the Entity component to add 3D objects and a VrButton
+component to capture clicks from the user.
+
+Entity::
+--In order to add 3D objects to the game world, we will use the Entity component,
+which allows us to render 3D objects in React 360.
+
+<Entity
+source={{
+obj: {uri: "http://linktoOBJfile.obj "},
+mtl: {uri: "http://linktoMTLfile.obj "}
+}}
+/>
+
+--Files containing the specific 3D object's information are added to the Entity
+component using a source attribute. The source attribute takes an object of keyvalue
+pairs to map resource file types to their locations.
+
+--React 360 supports the
+Wavefront OBJ file format, which is a common representation for 3D models.
+
+--in
+the source attribute, the Entity component supports the following keys:
+obj: The location of an OBJ-formatted model
+mtl: The location of an MTL-formatted material (the companion to OBJ).
+
+--The values for the obj and mtl properties point to the location of these files and can
+be static strings, asset() calls, require() statements, or URI strings.
+
+NBs:
+OBJ (or .OBJ) is a geometry definition file format that was first
+developed by Wavefront Technologies. It is a simple data format
+that represents 3D geometry as a list of vertices and texture vertices.
+OBJ coordinates have no units, but OBJ files can contain scale
+information in a human-readable comment line.
+
+--MTL (or .MTL) are material library files that contains one or more
+material definitions, each of which includes the color, texture, and
+reflection map of individual materials. These are applied to the
+surfaces and vertices of objects.
+
+--The Entity component also takes transform property values in the style attribute,
+so the objects can be placed at the desired positions and orientations in the 3D world
+space.
+
+--Game application, makers will add URLs pointing to the VR object
+files (both .obj and .mtl) for each of their Entity objects in a game, and also specify
+the transform property values to indicate where and how the 3D objects should be
+placed in the game world.
+
+--The Entity component will render 3D objects in the 3D world space. In order to
+make these objects interactive, we need to use the VrButton component.
+
+VrButton::
+--The VrButton component in React 360 will help us to implement a simple, buttonstyle
+onClick behavior for the objects and Text buttons that will be added to the
+game.
+
+--<VrButton onClick={this.clickHandler}>
+<View>
+<Text>Click me to make something happen!</Text>
+</View>
+</VrButton>
+
+--This component is a helper for managing click-type interactions from the user across
+different input devices. Input events that will trigger the click event include a
+spacebar press on the keyboard, a left-click on the mouse, and a touch on the screen.
+
+--The Entity and VrButton components from React 360 will allow us to render
+interactive 3D objects in the game world.
