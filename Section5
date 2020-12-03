@@ -27,3 +27,41 @@ resource-efficient.
 animations. Core components can be animated natively with this library, and it is possible to animate other components using
 createAnimatedComponent(). This library was originally implemented from React Native.
 
+Lecture 2:
+Clicking on the 3D objects:::
+--In order to register the click behavior on each 3D object added to the game, we need
+to wrap the Entity component with a VrButton component that can call the
+onClick handler
+
+When a 3D object is clicked on by a user, we need the collectItem method to
+perform the following actions with respect to the game features::
+--Check whether the clicked object is an answerObject or a wrongObject.
+Based on the object type, play the associated sound.
+--If the object is an answerObject, it should be collected and removed from
+view, then added to a list of collected objects.
+--Check whether all instances of answerObject were successfully collected
+with this click:
+--If yes, show the game completed message to the player and
+play the sound for game completed
+
+Collecting the correct object on click::
+--When a user clicks on a 3D object, we need to first check whether the clicked object is
+an answer object. If it is, this object will be collected and hidden from view, and a list
+of collected objects will be updated along with the total number to keep track of the
+user's progress in the game.
+
+--If the vrObject is an answerObject, indexOf will return the array index of the
+matched object; otherwise, it will return -1 if no match is found.
+
+--Using the collectedList array, we will also determine which Entity component should be hidden from the view because the associated object was collected. The
+display style property of the relevant Entity component will be set based on the Boolean value of the corresponding index in the collectedList array.
+
+--For example, in the following screenshot, the treasure chest can be clicked on to be collected as it is an answerObject, whereas the flower pot cannot be collected
+because it is a wrongObject.
+
+--When the treasure chest is clicked on, it disappears from the view as the collectedList is updated, and we also play the sound effect for collection using
+AudioModule.playOneShot.
+--As the flower pot was identified to be a wrong object, the collectedList was not updated and it remains on the screen, whereas the treasure chest is gone
+
+--After a clicked object is collected using this method, we will also check whether all of the answerObjects have been collected and whether the game is complete with a
+call to the checkGameCompleteStatus method

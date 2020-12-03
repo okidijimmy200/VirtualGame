@@ -104,6 +104,8 @@ API. We will call this inside the componentDidMount of the MERNVR component */
     return {
       /*The display property will allow us to show or hide an object based on whether it
 has already been collected by the player or not */
+/*Using the collectedList array, we will also determine which Entity component should be hidden from the view because the associated object was collected. The
+display style property of the relevant Entity component will be set based on the Boolean value of the corresponding index in the collectedList array */
             display: this.state.collectedList[index] ? 'none' : 'flex',
             color: vrObject.color,
             transform: [
@@ -120,13 +122,23 @@ world. */
             ]
           }
   }
+  /*When a 3D object is clicked on by a user, we need the collectItem method to perform the following actions with respect to the game features */
   collectItem = vrObject => event => {
+    /*Any time a VR object is clicked on by the user, in this method, we will first check the type of the object before taking the related actions */
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /*To check whether the clicked VR object is an answerObject, we will use the indexOf method to find a match in the answerObjects array */
     let match = this.state.game.answerObjects.indexOf(vrObject)
+    /*If the vrObject is an answerObject, indexOf will return the array index of the matched object; otherwise, it will return -1 if no match is found. */
     if (match != -1) {
+      /*To keep track of collected objects in the game, we will also maintain an array of Boolean values in collectedList at corresponding indices, and the total number of
+objects collected so far in collectedNum */
       let updateCollectedList = this.state.collectedList
       let updateCollectedNum = this.state.collectedNum + 1
       updateCollectedList[match] = true
       this.checkGameCompleteStatus(updateCollectedNum)
+      /*When the treasure chest is clicked on, it disappears from the view as the
+collectedList is updated, and we also play the sound effect for collection using
+AudioModule.playOneShot */
       AudioModule.playOneShot({
           source: asset('collect.mp3'),
       })
@@ -137,6 +149,8 @@ as the source attribute */
       AudioModule.playOneShot({
         /*The source attribute in the options passed to playEnvironmental and
 playOneShot takes a resource file location to load the audio */
+////////////////////////////////////////////////////////////////////////////////////////////////////
+/*However, when the flower pot is clicked on, and it is identified as a wrong object, we play another sound effect indicating it cannot be collected */
         source: asset('clog-up.mp3'), //we will place the sound audio files for the game in the static_assets folder, to be retrieved using asset() for each audio added to the game,
         /*It can be an asset() statement or a resource URL declaration in the form of {uri: 'PATH'}. */
       })
@@ -199,6 +213,10 @@ the Entity components with details of each object */}
           /*onClick: The onClick event is used with the VrButton component, and is fired when there is click interaction with VrButton. We will use this to
 set click event handlers on the VR objects, and also on the game complete message to redirect the user out of the VR application to a link containing a
 list of games */
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*In order to register the click behavior on each 3D object added to the game, we need to wrap the Entity component with a VrButton component that can call the
+onClick handler */
+/*The VrButton component will call the collectItem method when clicked on, and pass it the current object's details */
             return (<VrButton onClick={this.collectItem(vrObject)} key={i}>
               {/* The setModelStyles method constructs the styles for the
 specific VR object to be rendered, using values defined in the VR object's details. */}
