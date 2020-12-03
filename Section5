@@ -77,3 +77,23 @@ down, behind, or forward in the 360-degree VR world.
 --The replace method can be passed any valid URL, and once this React 360 game code is integrated with the MERN VR Game application in Chapter 14, Making the VR
 Game Dynamic Using MERN, replace('/') will take the user to the home page of the whole application.
 
+Lecture 7:
+Bundling for production and integration with MERN::
+--we will look at how to bundle the React 360 code, integrate it with a MERN application, and test the integration by running the game from the
+application.
+
+Bundling React 360 files::
+--React 360 tools provide a script to bundle all of the React 360 application code into a
+few files that we can just place on the MERN web server and serve as content at a
+specified route
+
+*******************yarn bundle*********************8
+
+--This generates compiled versions of the React 360 application files in a folder called
+build. The compiled bundle files are client.bundle.js and index.bundle.js.
+
+--These two files, in addition to the index.html file and the static-assets/ folder,
+make up the production version of the whole React 360 application that was
+developed
+
+Integrating with a MERN application::
