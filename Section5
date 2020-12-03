@@ -1,0 +1,29 @@
+Lecture 1:
+Interacting with VR objects::
+--In order to make the VR game objects interactive, we will use the React 360 event
+handlers, such as onEnter and onExit with Entity, and onClick with VrButton,
+to add rotation animation and gameplay behavior.
+
+--we will
+add the implementations for rotating a VR object when a user focuses on it, and for
+adding click behavior on the objects to allow a user to collect the correct objects in the
+game.
+
+Rotating a VR object::
+--We want to add a feature that starts rotating a 3D object around its y axis whenever a
+player focuses on the 3D object, that is, when the platform cursor begins intersecting
+with the Entity component rendering the specific 3D object.
+
+Animation with requestAnimationFrame::
+--The rotation behavior for each 3D object is implemented in the event handlers added
+to the Entity component, which is rendering the 3D object.
+
+NB:
+--The window.requestAnimationFrame() method asks the browser to call a specified callback function to update an animation
+before the next repaint. With requestAnimationFrame, the browser optimizes the animations to make them smoother and more
+resource-efficient.
+
+--Though not covered here, it is also worth exploring the React 360 Animated library, which can be used to compose different types of
+animations. Core components can be animated natively with this library, and it is possible to animate other components using
+createAnimatedComponent(). This library was originally implemented from React Native.
+

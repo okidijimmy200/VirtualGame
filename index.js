@@ -83,6 +83,8 @@ the player */
       collectedList: [],
       hmMatrix: VrHeadModel.getHeadMatrix()
     }
+    /*Using the rotate method, we will update the rotateY transform value of the given
+object at a steady rate on a set time interval with requestionAnimationFrame */
     this.lastUpdate = Date.now()
   }
   componentDidMount = () => {
@@ -171,12 +173,19 @@ Location.replace(url) */
     const diff = now - this.lastUpdate
     const vrObjects = this.state.vrObjects
     vrObjects[index].rotateY = vrObjects[index].rotateY + diff / 200
+    /*Using the rotate method, we will update the rotateY transform value of the given
+object at a steady rate on a set time interval with requestionAnimationFrame */
     this.lastUpdate = now
     this.setState({vrObjects: vrObjects})
+    /*The requestAnimationFrame method will take the rotate method as a recursive callback function, then execute it to redraw each frame of the rotation animation with
+the new values, and, in turn, update the animation on the screen. */
     this.requestID = requestAnimationFrame(this.rotate(index))
   }
+  /*The requestAnimateFrame method returns a requestID, which we will use in the call to stopRotate, so the animation gets canceled in the stopRotate method */
   stopRotate = () => {
     if (this.requestID) {
+      /*This will implement the functionality of animating the 3D object only when it is in the
+viewer's focus. */
       cancelAnimationFrame(this.requestID)
       this.requestID = null
     }
@@ -201,6 +210,9 @@ to setModelStyles */
                           obj: {uri: vrObject.objUrl},
                           mtl: {uri: vrObject.mtlUrl}
                         }}
+              /*We want to add a feature that starts rotating a 3D object around its y axis whenever a player focuses on the 3D object, that is, when the platform cursor begins intersecting
+with the Entity component rendering the specific 3D object. */
+                        // /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                         /*onEnter: This event is fired whenever the platform cursor begins intersecting with a component. We will capture this event for the VR
 objects in the game, so the objects can start rotating around the y axis when the platform cursor enters the specific object */
                         onEnter={this.rotate(i)}
