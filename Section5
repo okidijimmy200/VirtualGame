@@ -65,3 +65,15 @@ AudioModule.playOneShot.
 
 --After a clicked object is collected using this method, we will also check whether all of the answerObjects have been collected and whether the game is complete with a
 call to the checkGameCompleteStatus method
+
+Lecture 6:
+Game completed state::
+--Every time an answerObject is collected, we will check whether the total number of collected items is equal to the total number of objects in the answerObjects array to
+determine whether the game is complete.
+--These style values will render the View component with the completion message at
+the center of the user's current view, regardless of whether they are looking up,
+down, behind, or forward in the 360-degree VR world.
+
+--The replace method can be passed any valid URL, and once this React 360 game code is integrated with the MERN VR Game application in Chapter 14, Making the VR
+Game Dynamic Using MERN, replace('/') will take the user to the home page of the whole application.
+

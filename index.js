@@ -156,17 +156,26 @@ playOneShot takes a resource file location to load the audio */
       })
     }
   }
+  /*Every time an answerObject is collected, we will check whether the total number of collected items is equal to the total number of objects in the answerObjects array to
+determine whether the game is complete. */
   checkGameCompleteStatus = (collectedTotal) => {
     if (collectedTotal == this.state.game.answerObjects.length) {
       /*Environmental audio: To play audio on loop and set the mood when the game is successfully completed, we will use the playEnvironmental
 method, which takes an audio file path as the source attribute, and the loop option as a playback parameter */
       AudioModule.playEnvironmental({
+        //Play the audio for game completed, using AudioModule.playEnvironmental
         source: asset('happy-bot.mp3'),
         loop: true
       })
+      /*Fetch the current headMatrix value using VrHeadModel so that it can be set as the transform matrix value for the View component containing the
+game completion message */
+/*Set the display style property of the View message to flex, so the message renders to the viewer */
       this.setState({hide: 'flex', hmMatrix: VrHeadModel.getHeadMatrix()})
     }
   }
+  /*The call to the setGameCompletedStyle() method will set the styles for the View
+message with the updated display value and the transform matrix
+value */
   setGameCompletedStyle = () => {
     return {
             position: 'absolute',
@@ -176,10 +185,13 @@ method, which takes an audio file path as the source attribute, and the loop opt
             transform: [{translate: [0, 0, 0]}, {matrix: this.state.hmMatrix}]
           }
   }
+  /*The final text in the View message will act as a button, as we wrapped this View in a
+VrButton component that calls the exitGame method when clicked */
   exitGame = () => {
     /*Handling outgoing links: When we want to direct the user out of the VR application to another link, we can use the replace method in Location,
 as shown in the following code:
 Location.replace(url) */
+/*The exitGame method will use the Location.replace method to redirect the user to an external URL that may contain a list of games */
     Location.replace('/')
   }
   rotate = index => event => {
@@ -241,6 +253,8 @@ with a component */
                     </VrButton>
                   )
         })}
+        {/* The View component containing the message congratulating the player for
+completing the game will be added to the parent View componen */}
         <View style={this.setGameCompletedStyle()}>
           {/* These style objects defined using StyleSheet.create can be added to components
 as required */}
