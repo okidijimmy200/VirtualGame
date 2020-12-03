@@ -89,3 +89,49 @@ Lecture 3:
 Details of VR objects::
 --The two arrays in the game data structure will store details of the VR objects to be
 added in the game world
+
+Lecture 4:
+Static data versus dynamic data::
+--we will update the React 360 code to fetch game data dynamically from the backend database. This will render the React 360 game view
+with different games stored in the database.
+
+Building the game view in React 360::
+--We will apply the React 360 concepts and use the game data structure to implement
+the game features for each game in the MERN VR Game application.
+
+--This will make the sample game's details available for building the rest of the game
+features. In the following sections, we will update the code in the index.js and
+client.js files to first mount the game world, define the CSS styles, and load the
+360-degree environment for the game. Then, we will add the 3D VR objects to the
+game, make these objects interactive, and implement behavior that indicates the game
+is completed.
+
+Updating client.js and mounting to Location::
+--In order to use the 3D meter-based coordinate
+system for a layout in 3D space, we need to mount to a Location object instead of a
+Surface
+--This will mount our game view to a React 360 Location
+--You can also customize the initial background scene by updating the r360.compositor.setBackground(r360.getAssetURL('360_w
+orld.jpg')) code in client.js to use your desired image.
+
+Lecture 5:
+Defining styles with StyleSheet::
+--In index.js, we will update the default styles generated in the initial React 360
+project to add our own CSS rules. In the StyleSheet.create call, we will define
+style objects to be used with the components in the game.
+--we are keeping the styling simple
+with CSS declared for only the text and button to be displayed when the game is
+completed.
+
+World background::
+--In order to set the game's 360-degree world background, we will update the current
+background scene using the setBackgroundImage method from the Environment
+API. We will call this inside the componentDidMount of the MERNVR component.
+--To generate the preceding screenshot, the View and Text components in the default
+code were also updated with custom CSS rules to show this hello text on the screen.
+
+Adding 3D VR objects::
+--We will add 3D objects to the game world using Entity components from React 360,
+along with the sample object details in the answerObjects and wrongObjects
+arrays that were defined for the game.
+

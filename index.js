@@ -20,6 +20,7 @@ export default class MERNVR extends React.Component {
   constructor() {
     super()
     this.state = {
+      /*we will start developing the game features here with dummy game data that is set in component state. */
       game: {
         /*name: A string representing the name of the game */
         name: 'Space Exploration',
@@ -85,17 +86,28 @@ the player */
     this.lastUpdate = Date.now()
   }
   componentDidMount = () => {
+    /*we will concatenate the answerObjects and wrongObjects arrays in componentDidMount to form a single array containing all of the VR objects.
+    This will give us a single array containing all of the VR objects for the game */
     let vrObjects = this.state.game.answerObjects.concat(this.state.game.wrongObjects)
     this.setState({vrObjects: vrObjects})
     Environment.setBackgroundImage(
+      /*In order to set the game's 360-degree world background, we will update the current
+background scene using the setBackgroundImage method from the Environment
+API. We will call this inside the componentDidMount of the MERNVR component */
       {uri: this.state.game.world}
     )
   }
+  /*setModelStyles method */
   setModelStyles = (vrObject, index) => {
     return {
+      /*The display property will allow us to show or hide an object based on whether it
+has already been collected by the player or not */
             display: this.state.collectedList[index] ? 'none' : 'flex',
             color: vrObject.color,
             transform: [
+              /*The translate and rotate values
+will render the 3D objects in the desired positions and orientations across the VR
+world. */
               {translateX: vrObject.translateX},
               {translateY: vrObject.translateY},
               {translateZ: vrObject.translateZ},
@@ -172,12 +184,19 @@ Location.replace(url) */
   render() {
     return (
       <View>
+        {/* we will iterate over this merged vrObjects array to render
+the Entity components with details of each object */}
         {this.state.vrObjects.map((vrObject, i) => {
           /*onClick: The onClick event is used with the VrButton component, and is fired when there is click interaction with VrButton. We will use this to
 set click event handlers on the VR objects, and also on the game complete message to redirect the user out of the VR application to a link containing a
 list of games */
             return (<VrButton onClick={this.collectItem(vrObject)} key={i}>
+              {/* The setModelStyles method constructs the styles for the
+specific VR object to be rendered, using values defined in the VR object's details. */}
                       <Entity style={this.setModelStyles(vrObject, i)}
+                      /*The obj and mtl file links are added to the source prop in Entity, and the
+transform style details are applied in the Entity component's styles with the call
+to setModelStyles */
                         source={{
                           obj: {uri: vrObject.objUrl},
                           mtl: {uri: vrObject.mtlUrl}
@@ -213,6 +232,9 @@ as required */}
 styles in one place rather than adding styles to individual components */
 
 const styles = StyleSheet.create({
+  /*In index.js, we will update the default styles generated in the initial React 360
+project to add our own CSS rules. In the StyleSheet.create call, we will define
+style objects to be used with the components in the game */
   completeMessage: {
     margin: 0.1,
     height: 1.5,

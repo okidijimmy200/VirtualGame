@@ -11,6 +11,8 @@ function init(bundle, parent, options = {}) {
   });
 
   // Render your app content to the default cylinder surface
+  /*In order to use the 3D meter-based coordinate system for a layout in 3D space, we need to mount to a Location object instead of a
+Surface */
   r360.renderToSurface(
     r360.createRoot('MERNVR', { /* initial props */ }),
     r360.getDefaultLocation()
